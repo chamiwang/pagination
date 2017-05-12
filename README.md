@@ -3,9 +3,12 @@ make pagination eazy 傻子也能用的分页器
 
 ## how to use
 
-### 1、u should  download the pager.js use it just like 把js搞下来就行
+### 1、u should  download the pager.js use it just like 把js搞下来再配个标签就行
 ```html
 <script src="pager.js"></script>
+<body>
+    <ul class="pagination" id="pager"></ul>
+</body>
 <script>
   showPager(10 ,3, 5);
 </script>
