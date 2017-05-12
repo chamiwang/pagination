@@ -58,6 +58,6 @@ var showPager = (function(){
     return function(page_number, current_page, show_number, callback){
 
         P.render(page_number, current_page, show_number, callback);
-        callback();
+        callback(current_page);
     }
 })();
