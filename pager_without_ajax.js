@@ -7,7 +7,13 @@ var showPager = (function(){
     };
 
     pager.prototype.render = function(page_number, current_page, show_number, callback){
-        var base_url  = window.location.href.substring(0, window.location.href.indexOf('page')-1);
+        var current_url = window.location.href;
+        if(current_url.indexOf('page') > 0) {
+            var base_url  = current_url.substring(0, current_url.indexOf('page')-1);
+        } else {
+            var base_url  = current_url;
+        }
+
         current_page = current_page?current_page:1;
         var half = Math.floor(show_number/2);
         var b_show_number = show_number;
