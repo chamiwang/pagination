@@ -15,6 +15,17 @@ var showPager = (function(){
         }
         var start_number = current_page-half;
         this.box.innerHTML='';
+
+        if(current_page > 1) {
+            var left = document.createElement('li');
+            var l_a = document.createElement('a');
+            l_a.innerHTML = '<';
+            left.append(l_a);
+            l_a.setAttribute('href', '#');
+            left.setAttribute('onclick', 'showPager('+page_number+','+(current_page-1)+','+b_show_number+','+callback+')');
+            this.box.append(left)
+        }
+
         for(var i=1;i<=show_number;i++) {
             var page_add = (start_number)>0?(start_number-1+i):i;
 
@@ -31,27 +42,21 @@ var showPager = (function(){
             }
             template.setAttribute('onclick', 'showPager('+page_number+','+page_add+','+b_show_number+','+callback+')');
 
-            if(start_number > 1 && i == 1) {
-                var left = document.createElement('li');
-                var l_a = document.createElement('a');
-                l_a.innerHTML = '<';
-                left.append(l_a);
-                l_a.setAttribute('href', '#');
-                left.setAttribute('onclick', 'showPager('+page_number+','+(current_page-1)+','+b_show_number+','+callback+')');
-                this.box.append(left)
-            }
+
 
             this.box.append(template);
-            if(i == show_number && ((current_page+half) < page_number))
-            {
-                var right = document.createElement('li');
-                var r_a = document.createElement('a');
-                r_a.innerHTML = '>';
-                right.append(r_a);
-                r_a.setAttribute('href', '#');
-                right.setAttribute('onclick', 'showPager('+page_number+','+(current_page+1)+','+b_show_number+','+callback+')');
-                this.box.append(right);
-            }
+
+        }
+
+        if(current_page < page_number)
+        {
+            var right = document.createElement('li');
+            var r_a = document.createElement('a');
+            r_a.innerHTML = '>';
+            right.append(r_a);
+            r_a.setAttribute('href', '#');
+            right.setAttribute('onclick', 'showPager('+page_number+','+(current_page+1)+','+b_show_number+','+callback+')');
+            this.box.append(right);
         }
     };
     var P = new pager();
