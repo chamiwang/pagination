@@ -24,10 +24,8 @@ var showPager = (function(){
         this.box.innerHTML='';
 
         if(current_page > 1) {
-            var left = document.createElement('li');
-            var l_a = document.createElement('a');
-            l_a.innerHTML = '<';
-            left.append(l_a);
+            var left = document.createElement('a');
+            left.innerHTML = '<';
 
             if(base_url.indexOf("?") >= 0 ){
                 page_url = base_url+'&page='+(current_page-1);
@@ -35,8 +33,8 @@ var showPager = (function(){
                 page_url = base_url+'?page='+(current_page-1);
             }
 
-            l_a.setAttribute('href', page_url);
-            left.setAttribute('onclick', 'showPager('+page_number+','+(current_page-1)+','+b_show_number+','+callback+')');
+            left.setAttribute('href', page_url);
+            left.setAttribute('class', 'list-group-item');
             this.box.append(left)
         }
 
@@ -46,9 +44,8 @@ var showPager = (function(){
             if(page_add>page_number) {
                 break;
             }
-            var template = document.createElement('li');
-            var a = document.createElement('a');
-            a.innerHTML = page_add;
+            var template = document.createElement('a');
+            template.innerHTML = page_add;
 
             if(base_url.indexOf("?") >= 0 ){
                 page_url = base_url+'&page='+page_add;
@@ -56,12 +53,13 @@ var showPager = (function(){
                 page_url = base_url+'?page='+page_add;
             }
 
-            a.setAttribute('href', page_url);
-            template.append(a);
+            template.setAttribute('href', page_url);
             if(page_add == current_page) {
-                template.setAttribute('class', 'active');
+                template.setAttribute('class', 'active list-group-item');
+            }else{
+                template.setAttribute('class', 'list-group-item');
             }
-            template.setAttribute('onclick', 'showPager('+page_number+','+page_add+','+b_show_number+','+callback+')');
+
 
 
 
@@ -72,10 +70,9 @@ var showPager = (function(){
 
         if(current_page < page_number)
         {
-            var right = document.createElement('li');
-            var r_a = document.createElement('a');
-            r_a.innerHTML = '>';
-            right.append(r_a);
+            var right = document.createElement('a');
+
+            right.innerHTML = '>';
 
             if(base_url.indexOf("?") >= 0 ){
                 page_url = base_url+'&page='+(current_page+1);
@@ -83,8 +80,8 @@ var showPager = (function(){
                 page_url = base_url+'?page='+(current_page+1);
             }
 
-            r_a.setAttribute('href', page_url);
-            right.setAttribute('onclick', 'showPager('+page_number+','+(current_page+1)+','+b_show_number+','+callback+')');
+            right.setAttribute('href', page_url);
+            right.setAttribute('class', 'list-group-item');
             this.box.append(right);
         }
     };
