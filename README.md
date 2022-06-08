@@ -10,7 +10,7 @@ make pagination eazy 傻子也能用的分页器
     <ul class="pagination" id="pager"></ul>
 </body>
 <script>
-  showPager(10 ,3, 5);
+  showPager(10 ,3, 5, 985);
 </script>
 ```
 ### 2、u may like boostrap css 最好再搞个bootstrap css，省的自己配样式
@@ -25,7 +25,8 @@ make pagination eazy 傻子也能用的分页器
 | ------------- |:-------------:| :-----|
 |page_number|int|how many pages u have|
 |current_page|int|which page now|
-|show_number|int|u want to show|
+|show_number|int|items'number for each page|
+|all_num|int|length of the list|
 |callback|int|callback|
 ---
 ### 4、enjoy it 就这样
